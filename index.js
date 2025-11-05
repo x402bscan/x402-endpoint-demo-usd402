@@ -152,7 +152,7 @@ const testPaymentMiddleware = paymentMiddleware(
   }
 );
 
-// Test endpoint that requires a payment of 1 WLFI USD
+// Test endpoint that requires a payment of 1 USD402
 // Only POST method is allowed, x402 middleware applied only to POST
 app.route("/test")
   .post(testPaymentMiddleware, (_req, res) => {

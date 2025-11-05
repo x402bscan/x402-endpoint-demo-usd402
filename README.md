@@ -52,10 +52,10 @@ Edit `.env` and configure all required parameters:
 PAYMENT_ADDRESS=0xYourAddressHere
 
 # Token configuration
-TOKEN_ADDRESS=0x8d0D000Ee44948FC98c9B98A4FA4921476f08B0d
+TOKEN_ADDRESS=0x602620956eA9a67D72914d4f122733849Fbcc8Fd
 TOKEN_DECIMALS=18
-TOKEN_SYMBOL=USD1
-TOKEN_NAME=World Liberty Financial USD
+TOKEN_SYMBOL=USD402
+TOKEN_NAME=X402 Wrapped USD
 TOKEN_VERSION=1
 PAYMENT_AMOUNT=1000000000000000000
 
@@ -64,8 +64,7 @@ NETWORK=bsc
 NETWORK_NAME=BSC (Binance Smart Chain)
 
 # Authorization configuration
-AUTHORIZATION_TYPE=permit
-FACILITATOR_CONTRACT=0xaef29E5A6278811Cb811eCdA0910f4e3295EEfa0
+AUTHORIZATION_TYPE=transfer
 MAX_TIMEOUT_SECONDS=120
 ```
 
@@ -90,8 +89,8 @@ All of these variables are **REQUIRED** and must be set in your `.env` file:
 | `PAYMENT_ADDRESS` | Your wallet address to receive payments | `0x742d35Cc...` |
 | `TOKEN_ADDRESS` | Token contract address on blockchain | `0x8d0D000E...` |
 | `TOKEN_DECIMALS` | Token decimals (usually 18 or 6) | `18` |
-| `TOKEN_SYMBOL` | Token symbol | `USD1`, `USDC`, `DAI` |
-| `TOKEN_NAME` | Full token name for EIP-712 | `World Liberty Financial USD` |
+| `TOKEN_SYMBOL` | Token symbol | `USD402`, `USDC`, `DAI` |
+| `TOKEN_NAME` | Full token name for EIP-712 | `X402 Wrapped USD` |
 | `TOKEN_VERSION` | Token version for EIP-712 | `1` |
 | `PAYMENT_AMOUNT` | Amount in smallest unit (amount × 10^decimals) | `1000000000000000000` |
 | `NETWORK` | Network identifier | `bsc`, `ethereum`, `polygon` |
@@ -149,10 +148,10 @@ curl http://localhost:3000/public
   "message": "This is a public endpoint, no payment required",
   "info": {
     "protectedEndpoint": "/test",
-    "requiredPayment": "1000000000000000000 USD1 (smallest unit)",
+    "requiredPayment": "1000000000000000000 USD402 (smallest unit)",
     "network": "BSC (Binance Smart Chain)",
-    "tokenAddress": "0x8d0D000Ee44948FC98c9B98A4FA4921476f08B0d",
-    "tokenSymbol": "USD1"
+    "tokenAddress": "0x602620956eA9a67D72914d4f122733849Fbcc8Fd",
+    "tokenSymbol": "USD402"
   }
 }
 ```
@@ -233,16 +232,16 @@ The x402 protocol works on any EVM-compatible network:
 
 ## Token Examples
 
-### World Liberty Financial USD (BSC)
+### X402 Wrapped USD (BSC)
 
 ```env
-TOKEN_ADDRESS=0x8d0D000Ee44948FC98c9B98A4FA4921476f08B0d
+TOKEN_ADDRESS=0x602620956eA9a67D72914d4f122733849Fbcc8Fd
 TOKEN_DECIMALS=18
-TOKEN_SYMBOL=USD1
-TOKEN_NAME=World Liberty Financial USD
+TOKEN_SYMBOL=USD402
+TOKEN_NAME=X402 Wrapped USD
 TOKEN_VERSION=1
 NETWORK=bsc
-AUTHORIZATION_TYPE=permit
+AUTHORIZATION_TYPE=transfer
 ```
 
 ### USDC (Ethereum)
@@ -277,7 +276,7 @@ The `PAYMENT_AMOUNT` must be specified in the token's smallest unit:
 
 **Examples:**
 
-For 18 decimals (WLFI, DAI):
+For 18 decimals (USD402, DAI):
 - 1 token = `1000000000000000000`
 - 0.5 token = `500000000000000000`
 - 10 tokens = `10000000000000000000`
@@ -303,16 +302,15 @@ railway init
 
 # Set all required environment variables
 railway variables set PAYMENT_ADDRESS=0xYourAddress
-railway variables set TOKEN_ADDRESS=0x8d0D000Ee44948FC98c9B98A4FA4921476f08B0d
+railway variables set TOKEN_ADDRESS=0x602620956eA9a67D72914d4f122733849Fbcc8Fd
 railway variables set TOKEN_DECIMALS=18
-railway variables set TOKEN_SYMBOL=USD1
-railway variables set TOKEN_NAME="World Liberty Financial USD"
+railway variables set TOKEN_SYMBOL=USD402
+railway variables set TOKEN_NAME="X402 Wrapped USD"
 railway variables set TOKEN_VERSION=1
 railway variables set PAYMENT_AMOUNT=1000000000000000000
 railway variables set NETWORK=bsc
 railway variables set NETWORK_NAME="BSC (Binance Smart Chain)"
-railway variables set AUTHORIZATION_TYPE=permit
-railway variables set FACILITATOR_CONTRACT=0xaef29E5A6278811Cb811eCdA0910f4e3295EEfa0
+railway variables set AUTHORIZATION_TYPE=transfer
 railway variables set MAX_TIMEOUT_SECONDS=120
 railway variables set FACILITATOR_URL=https://facilitator.x402bscan.io
 
